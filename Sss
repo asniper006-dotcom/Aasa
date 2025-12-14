@@ -1,0 +1,585 @@
+-- =========================
+-- GUI CREATION
+-- =========================
+
+local LMG2L = {}
+
+-- ScreenGui
+LMG2L["ScreenGui"] = Instance.new("ScreenGui")
+LMG2L["ScreenGui"].Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+LMG2L["ScreenGui"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Frame
+LMG2L["Frame"] = Instance.new("Frame")
+LMG2L["Frame"].Parent = LMG2L["ScreenGui"]
+LMG2L["Frame"].BorderSizePixel = 3
+LMG2L["Frame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LMG2L["Frame"].Size = UDim2.new(0.45962, 0, 0.57805, 0)
+LMG2L["Frame"].Position = UDim2.new(0.24589, 0, 0.13096, 0)
+LMG2L["Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+
+-- ImageLabel
+LMG2L["ImageLabel"] = Instance.new("ImageLabel")
+LMG2L["ImageLabel"].Parent = LMG2L["Frame"]
+LMG2L["ImageLabel"].BorderSizePixel = 0
+LMG2L["ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LMG2L["ImageLabel"].Image = "rbxassetid://100091122003498"
+LMG2L["ImageLabel"].Size = UDim2.new(1, 0, 0.80469, 0)
+LMG2L["ImageLabel"].Position = UDim2.new(0, 0, 0.19531, 0)
+
+-- TextLabel
+LMG2L["TextLabel"] = Instance.new("TextLabel")
+LMG2L["TextLabel"].Parent = LMG2L["Frame"]
+LMG2L["TextLabel"].BorderSizePixel = 3
+LMG2L["TextLabel"].TextSize = 48
+LMG2L["TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LMG2L["TextLabel"].FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+LMG2L["TextLabel"].Size = UDim2.new(1, 0, 0.19531, 0)
+LMG2L["TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+LMG2L["TextLabel"].Text = "†††† g00by gui †††††"
+
+-- UIDragDetector
+LMG2L["UIDragDetector"] = Instance.new("UIDragDetector")
+LMG2L["UIDragDetector"].Parent = LMG2L["Frame"]
+
+-- UIAspectRatioConstraint
+LMG2L["UIAspectRatioConstraint"] = Instance.new("UIAspectRatioConstraint")
+LMG2L["UIAspectRatioConstraint"].Parent = LMG2L["Frame"]
+LMG2L["UIAspectRatioConstraint"].AspectRatio = 1.89844
+
+-- =========================
+-- BUTTONS CREATION
+-- =========================
+
+local buttonsData = {
+    {Name="Skybox", Text="Skybox", Position=UDim2.new(0.02469,0,0.25,0), Size=UDim2.new(0.32922,0,0.21875,0), BackgroundTransparency=0.9, BorderColor3=Color3.fromRGB(153,162,164)},
+    {Name="Decalspam", Text="Decalspam", Position=UDim2.new(0.02469,0,0.50781,0), Size=UDim2.new(0.32922,0,0.22656,0), BackgroundTransparency=0.9, BorderColor3=Color3.fromRGB(203,203,203)},
+    {Name="Music", Text="†Music†", Position=UDim2.new(0.02469,0,0.77344,0), Size=UDim2.new(0.32922,0,0.20313,0), BackgroundTransparency=0.9, BorderColor3=Color3.fromRGB(150,169,175)},
+    {Name="Particle", Text="†Particle†", Position=UDim2.new(0.62551,0,0.24219,0), Size=UDim2.new(0.35802,0,0.22656,0), BackgroundTransparency=0.9, BorderColor3=Color3.fromRGB(161,161,161)},
+    {Name="Shedletsky", Text="Shedletsky", Position=UDim2.new(0.6214,0,0.50781,0), Size=UDim2.new(0.35802,0,0.23438,0), BackgroundTransparency=0.9, BorderColor3=Color3.fromRGB(147,151,151)},
+    {Name="c00lkify", Text="c00lkify", Position=UDim2.new(0.6214,0,0.76563,0), Size=UDim2.new(0.36214,0,0.20313,0), BackgroundTransparency=0.9, BorderColor3=Color3.fromRGB(142,142,142)},
+    {Name="Jumpscare", Text="Jumpscare2 anti skid/ Anticlipped my gui", Position=UDim2.new(0,0,1.03906,0), Size=UDim2.new(1,0,0.10156,0), TextSize=24, BackgroundTransparency=0, BorderColor3=Color3.fromRGB(0,0,0)},
+    {Name="K00pguii", Text="K00pguii", Position=UDim2.new(1.01646,0,0,0), Size=UDim2.new(0.30453,0,0.19531,0), BackgroundTransparency=0, BorderColor3=Color3.fromRGB(0,0,0)},
+    {Name="Dominus", Text="Dominus", Position=UDim2.new(1.01646,0,0.92188,0), Size=UDim2.new(0.31276,0,0.21875,0), TextSize=24, BackgroundTransparency=0, BorderColor3=Color3.fromRGB(2,3,3)},
+    {Name="Meme", Text="Meme", Position=UDim2.new(-0.32922,0,0,0), Size=UDim2.new(0.31276,0,0.20313,0), TextSize=24, BackgroundTransparency=0, BorderColor3=Color3.fromRGB(0,0,0)},
+    {Name="F†kngSky", Text="F†kngSky", Position=UDim2.new(-0.3251,0,0.91406,0), Size=UDim2.new(0.30864,0,0.22656,0), TextSize=18, BackgroundTransparency=0, BorderColor3=Color3.fromRGB(0,0,0)},
+    {Name="Fat", Text="Fat", Position=UDim2.new(-0.32922,0,0.44531,0), Size=UDim2.new(0.31276,0,0.21094,0), BackgroundTransparency=0, BorderColor3=Color3.fromRGB(0,0,0)},
+    {Name="Decal", Text="Decal", Position=UDim2.new(1.01646,0,0.42969,0), Size=UDim2.new(0.30453,0,0.21094,0), BackgroundTransparency=0, BorderColor3=Color3.fromRGB(0,0,0)}
+}
+
+LMG2L["Buttons"] = {}
+
+for _, btnData in ipairs(buttonsData) do
+    local btn = Instance.new("TextButton")
+    btn.Parent = LMG2L["Frame"]
+    btn.BorderSizePixel = 3
+    btn.TextSize = btnData.TextSize or 36
+    btn.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    btn.FontFace = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+    btn.BackgroundTransparency = btnData.BackgroundTransparency or 0.9
+    btn.Size = btnData.Size
+    btn.Position = btnData.Position
+    btn.BorderColor3 = btnData.BorderColor3 or Color3.fromRGB(0,0,0)
+    btn.Text = btnData.Text
+    LMG2L["Buttons"][btnData.Name] = btn
+end
+
+-- =========================
+-- BUTTONS FUNCTIONS (EDITABLE)
+-- =========================
+
+-- Skybox
+LMG2L["Buttons"]["Skybox"].MouseButton1Click:Connect(function()
+    local lighting = game:GetService("Lighting")
+lighting:ClearAllChildren()
+local sky = Instance.new("Sky", lighting)
+sky.SkyboxBk = "rbxassetid://100091122003498"
+sky.SkyboxFt = "rbxassetid://100091122003498"
+sky.SkyboxLf = "rbxassetid://100091122003498"
+sky.SkyboxRt = "rbxassetid://100091122003498"
+sky.SkyboxUp = "rbxassetid://100091122003498"
+sky.SkyboxDn = "rbxassetid://100091122003498"
+end)
+
+-- Decalspam
+LMG2L["Buttons"]["Decalspam"].MouseButton1Click:Connect(function()
+   -- https://scriptblox.com/script/Universal-Script-Decal-script-30651
+
+local id = "100091122003498" --decal id here
+
+for _, ssederx33p in pairs(game:GetDescendants()) do
+	if ssederx33p:IsA("Part") or ssederx33p:IsA("MeshPart") then
+		local decal = Instance.new("Decal")
+		decal.Parent = ssederx33p
+		decal.Texture = "rbxassetid://"..id
+		decal.Face = Enum.NormalId.Back
+		decal.Name = "1"
+		
+		local decal = Instance.new("Decal")
+		decal.Parent = ssederx33p
+		decal.Texture = "rbxassetid://"..id
+		decal.Face = Enum.NormalId.Top
+		decal.Name = "2"
+		
+		local decal = Instance.new("Decal")
+		decal.Parent = ssederx33p
+		decal.Texture = "rbxassetid://"..id
+		decal.Face = Enum.NormalId.Left
+		decal.Name = "3"
+		
+		local decal = Instance.new("Decal")
+		decal.Parent = ssederx33p
+		decal.Texture = "rbxassetid://"..id
+		decal.Face = Enum.NormalId.Front
+		decal.Name = "4"
+		
+		local decal = Instance.new("Decal")
+		decal.Parent = ssederx33p
+		decal.Texture = "rbxassetid://"..id
+		decal.Face = Enum.NormalId.Right
+		decal.Name = "5"
+		
+		local decal = Instance.new("Decal")
+		decal.Parent = ssederx33p
+		decal.Texture = "rbxassetid://"..id
+		decal.Face = Enum.NormalId.Bottom
+		decal.Name = "6"
+	end
+end
+end)
+
+-- Music
+LMG2L["Buttons"]["Music"].MouseButton1Click:Connect(function()
+    for i,v in pairs(game.Workspace:GetChildren()) do
+	if v.className == "Sound" then
+		v:Stop()
+		v:Remove()	
+	end	
+end
+s = Instance.new("Sound",Workspace)
+s.SoundId = "rbxassetid://111966908892660"
+s.Volume = 2009
+s.Looped = true
+s.Pitch = 1
+s:Play()
+wait(.1)
+s:Play()
+end)
+
+-- Particle
+LMG2L["Buttons"]["Particle"].MouseButton1Click:Connect(function()
+    pe = Instance.new("ParticleEmitter",game.Players.LocalPlayer.Character.Torso)
+pe.Texture = "http://www.roblox.com/asset/?id=100091122003498"
+pe.VelocitySpread = 00
+pe = Instance.new("ParticleEmitter",game.Players.LocalPlayer.Character.Torso)
+pe.Texture = "http://www.roblox.com/asset/?id=100091122003498"
+pe.VelocitySpread = 00
+pe = Instance.new("ParticleEmitter",game.Players.LocalPlayer.Character.Torso)
+pe.Texture = "http://www.roblox.com/asset/?id=100091122003498"
+pe.VelocitySpread = 00
+pe = Instance.new("ParticleEmitter",game.Players.LocalPlayer.Character.Torso)
+pe.Texture = "http://www.roblox.com/asset/?id=100091122003498"
+pe.VelocitySpread = 00
+end)
+
+-- Shedletsky
+LMG2L["Buttons"]["Shedletsky"].MouseButton1Click:Connect(function()
+    s = Instance.new("Sky")
+s.Name = "SKY"
+s.SkyboxBk = "http://www.roblox.com/asset/?id=172423468"
+s.SkyboxDn = "http://www.roblox.com/asset/?id=172423468"
+s.SkyboxFt = "http://www.roblox.com/asset/?id=172423468"
+s.SkyboxLf = "http://www.roblox.com/asset/?id=172423468"
+s.SkyboxRt = "http://www.roblox.com/asset/?id=172423468"
+s.SkyboxUp = "http://www.roblox.com/asset/?id=172423468"
+s.Parent = game.Lighting
+local c00lkidd1 = Instance.new("Sound", game.SoundService)
+local c00lkidd2 = Instance.new("Sound", game.SoundService)
+local c00lkidd3 = Instance.new("Sound", game.SoundService)
+local c00lkidd4 = Instance.new("Sound", game.SoundService)
+local c00lkidd5 = Instance.new("Sound", game.SoundService)
+local c00lkidd6 = Instance.new("Sound", game.SoundService)
+
+Instance.new("DistortionSoundEffect", c00lkidd1)
+Instance.new("DistortionSoundEffect", c00lkidd1)
+Instance.new("DistortionSoundEffect", c00lkidd1)
+
+Instance.new("DistortionSoundEffect", c00lkidd2)
+Instance.new("DistortionSoundEffect", c00lkidd2)
+Instance.new("DistortionSoundEffect", c00lkidd2)
+
+Instance.new("DistortionSoundEffect", c00lkidd3)
+Instance.new("DistortionSoundEffect", c00lkidd3)
+Instance.new("DistortionSoundEffect", c00lkidd3)
+
+Instance.new("DistortionSoundEffect", c00lkidd4)
+Instance.new("DistortionSoundEffect", c00lkidd4)
+Instance.new("DistortionSoundEffect", c00lkidd4)
+
+Instance.new("DistortionSoundEffect", c00lkidd5)
+Instance.new("DistortionSoundEffect", c00lkidd5)
+Instance.new("DistortionSoundEffect", c00lkidd5)
+
+c00lkidd1.SoundId = "rbxassetid://82020270111776"
+c00lkidd2.SoundId = "rbxassetid://98507417558287"
+c00lkidd3.SoundId = "rbxassetid://86474191257848"
+c00lkidd4.SoundId = "rbxassetid://84113601885842"
+c00lkidd5.SoundId = "rbxassetid://83282320583623"
+
+c00lkidd1.Volume = 10
+c00lkidd2.Volume = 10
+c00lkidd3.Volume = 10
+c00lkidd4.Volume = 10
+c00lkidd5.Volume = 10
+
+c00lkidd1.PlaybackSpeed = 1
+c00lkidd2.PlaybackSpeed = 1
+c00lkidd3.PlaybackSpeed = 1
+c00lkidd4.PlaybackSpeed = 1
+c00lkidd5.PlaybackSpeed = 1
+
+
+c00lkidd1:Play()
+
+c00lkidd1.Ended:Connect(function()
+c00lkidd2:Play()
+end)
+
+c00lkidd2.Ended:Connect(function()
+c00lkidd3:Play()
+end)
+
+c00lkidd3.Ended:Connect(function()
+c00lkidd4:Play()
+end)
+
+c00lkidd4.Ended:Connect(function()
+c00lkidd5:Play()
+end)
+
+c00lkidd5.Ended:Connect(function()
+c00lkidd6:Play()
+end)
+local ID =18889618673 --id here
+t1 = "http://www.roblox.com/asset/?id=18343405871"
+t2 = "http://www.roblox.com/asset/?id=18343405871"
+t3 = "http://www.roblox.com/asset/?id=18343405871"
+
+local p = game.Players:GetChildren()
+local w = game.Workspace:GetChildren()
+
+for i,v in pairs(p) do
+pe = Instance.new("ParticleEmitter", v.Character.Head)
+pe.Texture = t3
+pe.VelocitySpread = 5
+end
+end)
+
+-- c00lkify
+LMG2L["Buttons"]["c00lkify"].MouseButton1Click:Connect(function()
+    local skyId = "9549698366"
+local musicId = "72089843969979"
+
+local lighting = game:GetService("Lighting")
+lighting:ClearAllChildren()
+
+local sky = Instance.new("Sky", lighting)
+sky.SkyboxBk = "rbxassetid://" .. skyId
+sky.SkyboxDn = "rbxassetid://" .. skyId
+sky.SkyboxFt = "rbxassetid://" .. skyId
+sky.SkyboxLf = "rbxassetid://" .. skyId
+sky.SkyboxRt = "rbxassetid://" .. skyId
+sky.SkyboxUp = "rbxassetid://" .. skyId
+
+local soundService = game:GetService("SoundService")
+
+local existingSound = soundService:FindFirstChild("CoolkiddMusic")
+if existingSound then
+	if existingSound.IsPlaying then
+		existingSound:Stop()
+	end
+	existingSound:Destroy()
+end
+
+local newSound = Instance.new("Sound")
+newSound.Name = "CoolkiddMusic"
+newSound.SoundId = "rbxassetid://" .. musicId
+newSound.Volume = 1
+newSound.Looped = true
+newSound.PlaybackSpeed = 0.2
+newSound.Parent = soundService
+newSound:Play()
+
+for _, part in pairs(workspace:GetDescendants()) do
+	if part:IsA("BasePart") then
+		local decal = Instance.new("Decal", part)
+		decal.Texture = "rbxassetid://" .. skyId
+		decal.Face = Enum.NormalId.Top
+	end
+end
+
+local function applyEffects(player)
+	local function onChar(char)
+		local head = char:WaitForChild("Head", 5)
+		if head then
+			if head:FindFirstChild("CoolkiddTag") then
+				head.CoolkiddTag:Destroy()
+			end
+			if head:FindFirstChild("CoolkiddParticles") then
+				head.CoolkiddParticles:Destroy()
+			end
+
+			local billboard = Instance.new("BillboardGui", head)
+			billboard.Name = "CoolkiddTag"
+			billboard.Size = UDim2.new(0, 200, 0, 50)
+			billboard.StudsOffset = Vector3.new(0, 2, 0)
+			billboard.AlwaysOnTop = true
+
+			local textLabel = Instance.new("TextLabel", billboard)
+			textLabel.Size = UDim2.new(1, 0, 1, 0)
+			textLabel.BackgroundTransparency = 1
+			textLabel.Text = "c00lkidd"
+			textLabel.TextColor3 = Color3.new(1, 0, 0)
+			textLabel.TextStrokeTransparency = 0
+			textLabel.Font = Enum.Font.Arcade
+			textLabel.TextScaled = true
+
+			local emitter = Instance.new("ParticleEmitter", head)
+			emitter.Name = "CoolkiddParticles"
+			emitter.Texture = "rbxassetid://" .. skyId
+			emitter.Rate = 15
+			emitter.Speed = NumberRange.new(2, 6)
+			emitter.Lifetime = NumberRange.new(1.5, 2.5)
+			emitter.Size = NumberSequence.new(1)
+			emitter.Transparency = NumberSequence.new(0)
+			emitter.VelocitySpread = 180
+			emitter.LightEmission = 0.7
+			emitter.Acceleration = Vector3.new(0, 5, 0)
+		end
+	end
+
+	if player.Character then
+		onChar(player.Character)
+	end
+
+	player.CharacterAdded:Connect(onChar)
+end
+
+for _, player in pairs(game.Players:GetPlayers()) do
+	applyEffects(player)
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function()
+		applyEffects(player)
+	end)
+end)
+end)
+
+-- Jumpscare
+LMG2L["Buttons"]["Jumpscare"].MouseButton1Click:Connect(function()
+    --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+for i,v in pairs(game.Players:GetPlayers()) do
+   if v.Name ~= me and not v.PlayerGui:FindFirstChild("Screamer") and v:FindFirstChild("PlayerGui") then
+    spawn(function()
+     local newgui = Instance.new("ScreenGui",v.PlayerGui)
+     newgui.Name = "Screamer"
+     local newimage = Instance.new("ImageLabel",newgui)
+     newimage.Image = "http://www.roblox.com/asset/?id=83477596855873"
+     newimage.Size = UDim2.new(1,1,1,1)
+     local s = Instance.new("Sound",newgui)
+     s.SoundId = "rbxassetid://17826852783"
+     s.Volume = 9999999999999999999999999999999999999
+     s.Looped = true
+     s:Play()
+     print("Screamed "..v.Name)
+     while wait(9.4) do
+ 
+      newimage.Parent:Destroy()
+ 
+     end
+    end)
+   end
+  end
+end)
+
+-- K00pguii
+LMG2L["Buttons"]["K00pguii"].MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/8hdcuUw2"))()
+
+end)
+
+-- Dominus
+LMG2L["Buttons"]["Dominus"].MouseButton1Click:Connect(function()
+    -- Dominus Rain pequeño ejecutable
+local function DominusRainSmall()
+    while true do
+        local part = Instance.new("Part")
+        part.Name = "Furry"
+        part.CanCollide = false
+        part.Size = Vector3.new(50, 60, 50) -- Tamaño más pequeño
+        part.Position = Vector3.new(
+            math.random(-3000, 1000),
+            math.random(1, 3000),
+            math.random(-3000, 3000)
+        )
+        part.RotVelocity = Vector3.new(
+            math.random() * math.pi,
+            math.random() * math.pi,
+            math.random() * math.pi
+        )
+        part.Parent = workspace
+
+        local mesh = Instance.new("SpecialMesh", part)
+        mesh.MeshType = Enum.MeshType.FileMesh
+        mesh.Scale = Vector3.new(20, 20, 20) -- Escala más pequeña
+        mesh.MeshId = "rbxassetid://1484148960" -- Dominus Mesh
+        mesh.TextureId = "rbxassetid://1484148974" -- Dominus Texture
+
+        wait(0.1) -- Pausa para no bloquear el juego
+    end
+end
+
+-- Ejecutar Dominus Rain pequeño
+coroutine.wrap(DominusRainSmall)()
+end)
+
+-- Meme
+LMG2L["Buttons"]["Meme"].MouseButton1Click:Connect(function()
+    local skyId = "120970717821488"
+local musicId = "9043562513"
+
+local lighting = game:GetService("Lighting")
+lighting:ClearAllChildren()
+
+local sky = Instance.new("Sky", lighting)
+sky.SkyboxBk = "rbxassetid://" .. skyId
+sky.SkyboxDn = "rbxassetid://" .. skyId
+sky.SkyboxFt = "rbxassetid://" .. skyId
+sky.SkyboxLf = "rbxassetid://" .. skyId
+sky.SkyboxRt = "rbxassetid://" .. skyId
+sky.SkyboxUp = "rbxassetid://" .. skyId
+
+local soundService = game:GetService("SoundService")
+
+local existingSound = soundService:FindFirstChild("CoolkiddMusic")
+if existingSound then
+	if existingSound.IsPlaying then
+		existingSound:Stop()
+	end
+	existingSound:Destroy()
+end
+
+local newSound = Instance.new("Sound")
+newSound.Name = "CoolkiddMusic"
+newSound.SoundId = "rbxassetid://" .. musicId
+newSound.Volume = 1
+newSound.Looped = true
+newSound.PlaybackSpeed = 1
+newSound.Parent = soundService
+newSound:Play()
+
+for _, part in pairs(workspace:GetDescendants()) do
+	if part:IsA("BasePart") then
+		local decal = Instance.new("Decal", part)
+		decal.Texture = "rbxassetid://" .. skyId
+		decal.Face = Enum.NormalId.Top
+	end
+end
+
+local function applyEffects(player)
+	local function onChar(char)
+		local head = char:WaitForChild("Head", 5)
+		if head then
+			if head:FindFirstChild("CoolkiddTag") then
+				head.CoolkiddTag:Destroy()
+			end
+			if head:FindFirstChild("CoolkiddParticles") then
+				head.CoolkiddParticles:Destroy()
+			end
+
+			local billboard = Instance.new("BillboardGui", head)
+			billboard.Name = "CoolkiddTag"
+			billboard.Size = UDim2.new(0, 200, 0, 50)
+			billboard.StudsOffset = Vector3.new(0, 2, 0)
+			billboard.AlwaysOnTop = true
+
+			local textLabel = Instance.new("TextLabel", billboard)
+			textLabel.Size = UDim2.new(1, 0, 1, 0)
+			textLabel.BackgroundTransparency = 1
+			textLabel.Text = "Rip Shedletsky ......LOL"
+			textLabel.TextColor3 = Color3.new(1, 0, 0)
+			textLabel.TextStrokeTransparency = 0
+			textLabel.Font = Enum.Font.Arcade
+			textLabel.TextScaled = true
+
+			local emitter = Instance.new("ParticleEmitter", head)
+			emitter.Name = "CoolkiddParticles"
+			emitter.Texture = "rbxassetid://" .. skyId
+			emitter.Rate = 00
+			emitter.Speed = NumberRange.new(2, 6)
+			emitter.Lifetime = NumberRange.new(1.5, 2.5)
+			emitter.Size = NumberSequence.new(1)
+			emitter.Transparency = NumberSequence.new(0)
+			emitter.VelocitySpread = 1
+			emitter.LightEmission = 999
+			emitter.Acceleration = Vector3.new(0, 5, 0)
+		end
+	end
+
+	if player.Character then
+		onChar(player.Character)
+	end
+
+	player.CharacterAdded:Connect(onChar)
+end
+
+for _, player in pairs(game.Players:GetPlayers()) do
+	applyEffects(player)
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function()
+		applyEffects(player)
+	end)
+end)
+end)
+
+-- F†kngSky
+LMG2L["Buttons"]["F†kngSky"].MouseButton1Click:Connect(function()
+    s = Instance.new("Sky")
+s.Name = "Sky"
+s.Parent = game.Lighting
+s.SkyboxBk = "http://www.roblox.com/asset/?id=88226192261955"
+s.SkyboxDn = "http://www.roblox.com/asset/?id=88226192261955"
+s.SkyboxFt = "http://www.roblox.com/asset/?id=88226192261955"
+s.SkyboxLf = "http://www.roblox.com/asset/?id=88226192261955"
+s.SkyboxRt = "http://www.roblox.com/asset/?id=88226192261955" 
+s.SkyboxUp = "http://www.roblox.com/asset/?id=88226192261955"
+game.Lighting.TimeOfDay = 12
+end)
+
+-- Fat
+LMG2L["Buttons"]["Fat"].MouseButton1Click:Connect(function()
+    local lighting = game:GetService("Lighting")
+lighting:ClearAllChildren()
+local sky = Instance.new("Sky", lighting)
+sky.SkyboxBk = "rbxassetid://11688383656"
+sky.SkyboxFt = "rbxassetid://11688383656"
+sky.SkyboxLf = "rbxassetid://11688383656"
+sky.SkyboxRt = "rbxassetid://11688383656"
+sky.SkyboxUp = "rbxassetid://11688383656"
+sky.SkyboxDn = "rbxassetid://11688383656"
+end)
+
+-- Decal
+LMG2L["Buttons"]["Decal"].MouseButton1Click:Connect(function()
+    function exPro(root)
+		for _, v in pairs(root:GetChildren()) do
+			if v:IsA("Decal") and v.Texture ~= "http://www.roblox.com/asset/?id=128871684185595" then
+				v.Parent = nil
+			elseif v:IsA("BasePart") then
+				v.Material = "Plastic"
+				v.Transparency = 
